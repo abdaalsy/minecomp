@@ -39,12 +39,76 @@ Note: `rb/immediate` means that you can either use a register or an immediate fo
 
 ## Loading a Program
 ### How the Computer takes in instructions
+All computers fetch instructions from the memory address stored in the program counter. Instructions are too big to fit in one byte of memory, so we fetch three instead.
+
+Let's say the program counter points to address 3 in memory.
+- The first byte (Byte 0) stores the optional immediate operand
+- Byte 1 stores the register operands, and destination register
+- Byte 2 stores the operation to perform (ADD, SUB, etc.)
+
 ### Encoding an instruction in binary
+Here is a table that shows exactly what each instruction maps to in binary:
+| Instruction | Binary      |
+|--------------|-------------|
+| SLL          | 0000 0001   |
+| ADD          | 0000 0010   |
+| SUB          | 0000 0011   |
+| XOR          | 0000 0100   |
+| OR           | 0000 0101   |
+| AND          | 0000 0110   |
+| SRL          | 0000 0111   |
+| STORE        | 0001 0000   |
+| LOAD         | 0001 0001   |
+| BEQ          | 0000 1000   |
+| BLT          | 0000 1010   |
+| BGT          | 0000 1011   |
+
+You might notice JMP is not listed. That's because it only takes an immediate operand. Each instruction has a counterpart specifically to allow immediate operands, here is the table:
+
+| Instruction | Binary      |
+|--------------|-------------|
+| SLL_I          | 0010 0001   |
+| ADD_I          | 0010 0010   |
+| SUB_I          | 0010 0011   |
+| XOR_I          | 0010 0100   |
+| OR_I           | 0010 0101   |
+| AND_I          | 0010 0110   |
+| SRL_I          | 0010 0111   |
+| STORE_I        | 0011 0000   |
+| JMP            | 0010 1011   |
+
+Branching always takes in an immediate operand (for the offset), so it does not have a separate instruction.
+
 ### Encoding operands in binary
+Ok, we have our instructions, but how do we specify the operands? The byte of memory for operands uses this format:
+- The first two bits from the left are unused, they don't do anything.
+- The 2nd pair of bits (bit 5 and 4) specifies the register for the first operand
+- The 3rd pair of bits (bit 3 and 2) specifies the register for the second operand
+- The last pair of bits (bit 1 and 0) specifies the register where the output will be stored.
+
+As an example, lets say we are adding the number stored in register 2, and register 3, and storing the result in register 1. Our byte would look like:
+
+`0010 1101`
+
+Lets say you want to perform an immediate instruction, like incrementing register 3 by 1. Our first operand would be register 3, and our last operand would be register 3 (since thats where the output will be stored), but what about the 1? Immediate values have their own separate byte remember? So we'll just store the operand there in binary.
+
+Our operand byte will look like: `0011 0011`, and our immediate byte will look like: `0000 0001`
+
+Prepare this for each instruction in your program, and then we'll cover loading it into the computer.
+
 ### Writing to the Computer's Memory
+First, we need to actually get you in the world in Minecraft. To do this: 
+1. Download the "world.7z" file in the root folder of this repository.
+2. Extract it
+3. Move resulting folder to `.minecraft/saves`. If you don't know where .minecraft is:
+  - Windows: `C:/Users/<username>/AppData/Roaming/.minecraft`.
+  - Mac: `~/Library/Application Support/minecraft`
+  - Linux: `~/.minecraft`
+4. Load up the world in minecraft, it should have the name "circuits"
 
 ## Running a Program
 ### The OFF/ON switch
 ### Starting the clock
 ### The PAUSE switch
 ### The 7 segment display
+
