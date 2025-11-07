@@ -107,7 +107,9 @@ First, we need to actually get you in the world in Minecraft. To do this:
   - Windows: `C:/Users/<username>/AppData/Roaming/.minecraft`.
   - Mac: `~/Library/Application Support/minecraft`
   - Linux: `~/.minecraft`
-4. Load up the world in minecraft, it should have the name "circuits"
+4. A folder called `circuits` should appear in the `saves` folder. If you see "world" instead, open `world` and drag the `circuits` folder out of the world folder into `saves`.
+5. Load up the world in minecraft, it should have the name "circuits".
+6. Set both your Render and Simulation distance to 24 chunks in settings.
 
 Now that you are in the world, copy and paste this message in chat: `/tp <username> -168 133 -109 147.4 12.3`.
 You should see this:
@@ -156,6 +158,7 @@ We all make mistakes. To help investigate bugs in your program, I added in a pau
 ![Pause Switch](./assets/switch.png)
 
 Flipping it on will pause the program such that it won't respond to the clock. The clock is still running though so it is up to you to unpause right where the clock left off, otherwise you might experience some undefined behaviour.
+
 
 
 
