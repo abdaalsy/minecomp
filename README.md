@@ -1,7 +1,7 @@
 # Minecraft Computer
 Hello! This repository contains the world folder, and some instructions to get you up and and running with the Minecraft computer.
 
-![Demo video](./fibonacci.gif)
+![Demo video](./assets/fibonacci.gif)
 
 _Generating the fibonacci sequence in hexadecimal form until 233 (forgot to display the first two terms, significantly sped up)_
 
@@ -112,7 +112,7 @@ First, we need to actually get you in the world in Minecraft. To do this:
 Now that you are in the world, copy and paste this message in chat: `/tp <username> -168 133 -109 147.4 12.3`.
 You should see this:
 
-![Memory](./memory.png)
+![Memory](./assets/memory.png)
 
 - The levers allow you to select an address in memory with the magenta wool being the most significant bit
 - The glass wires allow you to decide what will be written to the address. (Place a redstone block on top of the redstone to power it)
@@ -137,7 +137,7 @@ To turn the computer off, all you need to do is flip that switch off. Memory is 
 ### Starting the Clock
 Enter this command into chat: `/tp <username> -86 195 -120 91.3 76.6`. You should see:
 
-![Clock](./clock.png)
+![Clock](./assets/clock.png)
 
 This is the clock, all computers run in cycles of:
 - fetch (retrieving an instruction from memory)
@@ -153,7 +153,7 @@ IMPORTANT: Ensure all the address selection levers, and data input lines are off
 ### The PAUSE Switch
 We all make mistakes. To help investigate bugs in your program, I added in a pause switch. Enter this command in chat to reach it: `/tp <username> -77.2 181.7 -130.2 74.2 17.2`. You should see:
 
-~[Pause Switch](./switch.png)
+~[Pause Switch](./assets/switch.png)
 
 Flipping it on will pause the program such that it won't respond to the clock. The clock is still running though so it is up to you to unpause right where the clock left off, otherwise you might experience some undefined behaviour.
 
