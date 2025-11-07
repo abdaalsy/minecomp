@@ -153,8 +153,9 @@ IMPORTANT: Ensure all the address selection levers, and data input lines are off
 ### The PAUSE Switch
 We all make mistakes. To help investigate bugs in your program, I added in a pause switch. Enter this command in chat to reach it: `/tp <username> -77.2 181.7 -130.2 74.2 17.2`. You should see:
 
-~[Pause Switch](./assets/switch.png)
+![Pause Switch](./assets/switch.png)
 
 Flipping it on will pause the program such that it won't respond to the clock. The clock is still running though so it is up to you to unpause right where the clock left off, otherwise you might experience some undefined behaviour.
+
 
 
