@@ -53,32 +53,32 @@ At each retrieval of an instruction, the program counter increments by 3. This i
 Here is a table that shows exactly what each instruction maps to in binary:
 | Instruction | Binary      |
 |--------------|-------------|
-| SLL          | 0000 0001   |
-| ADD          | 0000 0010   |
-| SUB          | 0000 0011   |
-| XOR          | 0000 0100   |
-| OR           | 0000 0101   |
-| AND          | 0000 0110   |
-| SRL          | 0000 0111   |
-| STORE        | 0001 0000   |
-| LOAD         | 0001 0001   |
-| BEQ          | 0000 1000   |
-| BLT          | 0000 1010   |
-| BGT          | 0000 1011   |
+| SLL          | 0000 0100   |
+| ADD          | 0000 1000   |
+| SUB          | 0000 1100   |
+| XOR          | 0001 0000   |
+| OR           | 0001 0100   |
+| AND          | 0001 1000   |
+| SRL          | 0001 1100   |
+| STORE        | 0100 0000   |
+| LOAD         | 0100 0100   |
+| BEQ          | 0010 0000   |
+| BLT          | 0010 1000   |
+| BGT          | 0010 1100   |
 
 You might notice JMP is not listed. That's because it only takes an immediate operand. Each instruction has a counterpart specifically to allow immediate operands, here is the table:
 
 | Instruction | Binary      |
 |--------------|-------------|
-| SLL_I          | 0010 0001   |
-| ADD_I          | 0010 0010   |
-| SUB_I          | 0010 0011   |
-| XOR_I          | 0010 0100   |
-| OR_I           | 0010 0101   |
-| AND_I          | 0010 0110   |
-| SRL_I          | 0010 0111   |
-| STORE_I        | 0011 0000   |
-| JMP            | 0010 1011   |
+| SLL_I          | 1000 0100   |
+| ADD_I          | 1000 1000   |
+| SUB_I          | 1000 1100   |
+| XOR_I          | 1001 0000   |
+| OR_I           | 1001 0100   |
+| AND_I          | 1001 1000   |
+| SRL_I          | 1001 1100   |
+| STORE_I        | 1100 0000   |
+| JMP            | 1010 1100   |
 
 Branching always takes in an immediate operand (for the offset), so it does not have a separate instruction.
 
@@ -158,6 +158,7 @@ We all make mistakes. To help investigate bugs in your program, I added in a pau
 ![Pause Switch](./assets/switch.png)
 
 Flipping it on will pause the program such that it won't respond to the clock. The clock is still running though so it is up to you to unpause right where the clock left off, otherwise you might experience some undefined behaviour.
+
 
 
 
